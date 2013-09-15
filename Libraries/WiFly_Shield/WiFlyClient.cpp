@@ -2,6 +2,18 @@
 #include "WiFly.h"
 #include "WiFlyClient.h"
 
+WiFlyClient::WiFlyClient() :
+  _WiFly (WiFly) {
+
+  _ip = NULL;
+  _port = NULL;
+  _domain = NULL;
+
+  isOpen = false;
+}
+
+
+
 WiFlyClient::WiFlyClient(uint8_t *ip, uint16_t port) :
   _WiFly (WiFly) {
   //stream (ParsedStream(SpiSerial)) {
@@ -76,6 +88,14 @@ void WiFlyClient::write(const uint8_t *buffer, size_t size) {
 #endif
 }
 
+boolean WiFlyClient::connect(const char* domain, uint16_t port) {
+ _ip = NULL;
+  _port = port;
+  _domain = domain;
+
+  isOpen = false;
+	connect();
+}
 boolean WiFlyClient::connect() {
   /*
    */

@@ -12,9 +12,10 @@
 
 class WiFlyClient : public Stream {
  public:
+  WiFlyClient();
   WiFlyClient(uint8_t *ip, uint16_t port);
   WiFlyClient(const char* domain, uint16_t port);
-
+  boolean connect(const char* domain, uint16_t port);
   boolean connect();
 
 #if ARDUINO >= 100
